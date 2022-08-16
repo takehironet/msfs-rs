@@ -238,6 +238,7 @@ impl<'a> SimConnect<'a> {
         request_id: sys::SIMCONNECT_DATA_REQUEST_ID,
         object_id: sys::SIMCONNECT_OBJECT_ID,
         period: Period,
+        flags: sys::SIMCONNECT_DATA_REQUEST_FLAG,
     ) -> Result<()> {
         let define_id = self.get_define_id::<T>()?;
 
@@ -248,7 +249,7 @@ impl<'a> SimConnect<'a> {
                 define_id,
                 object_id,
                 period as sys::SIMCONNECT_PERIOD,
-                sys::SIMCONNECT_DATA_REQUEST_FLAG_CHANGED,
+                flags,
                 0,
                 0,
                 0,
